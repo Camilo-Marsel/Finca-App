@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+  <div class="card border-danger">
+    <div class="card-header bg-danger text-white">
+      <h4 class="mb-0">Eliminar Contrato</h4>
+    </div>
+    <div class="card-body">
+      <p class="mb-4">
+        ¿Seguro que deseas eliminar el contrato de 
+        <strong>{{ contrato.trabajador }}</strong> 
+        del <strong>{{ contrato.fecha_inicio }}</strong> 
+        al <strong>{{ contrato.fecha_fin }}</strong>?
+      </p>
+      <form method="POST">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Sí, eliminar</button>
+        <a href="{% url 'listar_contratos' %}" class="btn btn-secondary ms-2">Cancelar</a>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}
